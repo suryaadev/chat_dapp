@@ -1,24 +1,18 @@
-
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
-
-  const lockedAmount = hre.ethers.utils.parseEther("1");
-
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy();
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+  const ChatDapp = await hre.ethers.getContractFactory("ChatDapp");
+  const chatDappFactory = await ChatDapp.deploy();
+  await chatDappFactory.deployed();
+  console.log(`CONTRACT DEPLOYED AT :::: ${chatDappFactory.address}`)
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+
+
+  // 0x5FbDB2315678afecb367f032d93F642f64180aa3 - localhost

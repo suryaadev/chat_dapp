@@ -1,8 +1,12 @@
 import React from 'react'
+import { Friend, Navbar } from '../Components'
+
 
 const ChatDapp = () => {
   return (
-    <div>ChatDapp</div>
+    <div>
+      fbuie
+    </div>
   )
 }
 
